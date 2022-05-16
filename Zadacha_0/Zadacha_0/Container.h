@@ -21,7 +21,7 @@ namespace namespaceContainer {
 
 		int numOfBoxes();
 		double sumWeight();
-		int sumVlaue();
+		int sumValue();
 		namespaceBox::Box getBox(int index);
 		int setBox(namespaceBox::Box& box);
 		void deleteBox(int index);

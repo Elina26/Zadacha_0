@@ -21,7 +21,7 @@ double Container::sumWeight()
 
 
 // суммарная стоимость содержимого
-int Container::sumVlaue()
+int Container::sumValue()
 {
 	int res = 0; int size = vector.size();
 	for (int i = 0; i < size; i++) {
@@ -59,23 +59,25 @@ int Container::setBox(namespaceBox::Box& box) {
 void Container::deleteBox(int index) {
 	std::vector <namespaceBox::Box> copy(0);
 
-    //std::vector <namespaceBox::Box> copy(0);
-
-    // заполняем copy
+    // заполняем copy всем, что идет после index в контейнере
     for (int i = index + 1; i < vector.size(); i++) {
         copy.push_back(vector[i]);
     }
 
     int size = vector.size();
-    // удаляем хвост из вектора
+    // удаляем из контейнера с index вкл и до конца
     for (int i = index; i < size; i++) {
 		vector.pop_back();
     }
 
-
+	// добавляем все из копии в контейнер
     for (int i = 0; i < copy.size(); i++) {
-		vector.push_back(copy[i]);
+	    vector.push_back(copy[i]);
     }
+
+	// удаляем копию
+	copy.clear();
+	copy.shrink_to_fit();
 }
 
 namespaceBox::Box& Container::operator[](int index)
